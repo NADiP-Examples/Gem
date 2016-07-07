@@ -1,0 +1,16 @@
+.ico img{
+    width: 40px;
+}
+.home-img img{
+    max-width: 100%;
+}
+.error{
+    color: red;
+}
+
+ul > li{
+    list-style-type: none;
+}
+.gem_container img{
+    width: 30px;
+}
