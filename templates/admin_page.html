@@ -1,18 +1,19 @@
 {% extends "base_admin.html" %}
 {% block js %}
     {{ block.super }}
+    <script src="/static/js/create_user.js"></script>
 {% endblock %}
 {% block content %}
     <div class="row">
         <div class="col-md-6">
             Пользователи:
-            <ul id="users">
+            <ul id="users_list">
                 {% include 'inc-users_list.html' %}
             </ul>
         </div>
     </div>
-    <form id="user_form" onclick="send_data({{ id }})">
+    <form id="user_form">
         {% include 'inc-registration_form.html' %}
-        <input type="submit" value="Edit account">
     </form>
+    <input type="submit" value="Edit account" onclick="send_data()">
 {% endblock %}

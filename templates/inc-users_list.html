@@ -1,6 +1,7 @@
 {% for user in users %}
     <li>{{ user }}
-        <button type="button" class="btn btn-default" aria-label="Edit">
+        <button type="button" class="btn btn-default" aria-label="Edit"
+                onclick="fill_form({{ user.id }})">
             <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
         </button>
         <a href="delete/user/{{ user.id }}" class="btn btn-default">

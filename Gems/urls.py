@@ -29,7 +29,8 @@ urlpatterns += [
     url(r'^user/registration/$', registration),
     url(r'^admin/$', admin_page),
     url(r'^admin/delete/user/(\d+)$', delete_user),
-
+    url(r'^admin/get_user_form/(\d+)$', get_user_form),
+    url(r'^admin/create/user/(\d*)$', create_user),
 ]
 
 # Данный подход нерекомендуется, и будет убран в django 1.10

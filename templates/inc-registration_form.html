@@ -1,5 +1,6 @@
 {% csrf_token %}
 <table>
+    <span class="hidden" id="user_id">{{ id }}</span>
     {% for field in form %}
         <tr>
             <td>
