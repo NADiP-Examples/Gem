@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.models import User
-from userManagementApp.forms import MyRegistrationForm
+from userManagementApp.forms import MyRegistrationForm, UserChangeForm
 from django.http import Http404, JsonResponse
 from django.template import loader
 from django.template.context_processors import csrf
@@ -46,10 +46,10 @@ def create_user(request, user_id=None):
         print('user_id = ', user_id)
         if not user_id:
             print('Not user_id')
-            user = MyRegistrationForm(request.POST)
+            user = User(request.POST)
         else:
             user = get_object_or_404(User, id=user_id)
-            user = MyRegistrationForm(request.POST or None, instance=user)
+            user = UserChangeForm(request.POST or None, instance=user)
         if user.is_valid():
             user.save()
             users = User.objects.all()
