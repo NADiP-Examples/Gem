@@ -10,35 +10,37 @@
     </title>
     {% block css %}
         {# Помним про рекомендованный подход, для удобства я создал Live Template #}
-        <link rel="stylesheet" href="{% static 'css/base.css'%}"/>
-        <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}"/>
-        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css'%}"/>
-        <link rel="stylesheet" href="{% static 'css/font-awesome.css'%}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
     {% endblock %}
     {% block js %}
-        <script src="{% static 'js/jquery-2.1.4.min.js'%}"></script>
-        <script src="{% static 'js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
     {% endblock %}
     <meta charset="utf-8">
 </head>
 <body>
 <div class="container">
-    <div class="page-header">
-        <div class="row">
-            <div class="ico col-md-2 text-center">
-                <img src="/static/images/icon_gem.gif">
-            </div>
-            <div class="col-md-4 text-center">
-                <h1>Драгоценные камни</h1>
+    <a href="/">
+        <div class="page-header">
+            <div class="row">
+                <div class="ico col-md-2 text-center">
+                    <img src="/static/images/icon_gem.gif">
+                </div>
+                <div class="col-md-4 text-center">
+                    <h1>Драгоценные камни</h1>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
     <div class="row">
         {% block menu %}
             <nav class="navbar navbar-default col-md-8">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Главная</a>
+                        <a class="navbar-brand" href="/">Главная</a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
