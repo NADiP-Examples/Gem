@@ -24,7 +24,8 @@ urlpatterns = [
 urlpatterns += [
     url(r'^user/login/$', login),
     url(r'^user/logout/$', logout),
-    url(r'^user/registration/$', registration_low),
+    # url(r'^user/registration/$', registration_low),
+    url(r'^user/registration/$', registration),
 
 ]
 

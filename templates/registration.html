@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <form method="post" role="form" action="/user/registration/">
+        {#        {% include 'inc-registration_form.html' %}#}
+        {% include 'inc-reg_form_as_table.html' %}
+        <input type="submit" value="Create the account">
+    </form>
+{% endblock %}
+
