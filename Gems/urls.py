@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from mainApp.views import *
 from userManagementApp.views import *
+from adminApp.views import *
 
 urlpatterns = [
     url(r'^$', main),
@@ -26,6 +27,8 @@ urlpatterns += [
     url(r'^user/logout/$', logout),
     # url(r'^user/registration/$', registration_low),
     url(r'^user/registration/$', registration),
+    url(r'^admin/$', admin_page),
+    url(r'^admin/delete/user/(\d+)$', delete_user),
 
 ]
 
