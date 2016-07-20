@@ -46,14 +46,14 @@ function getFormData(form) {
     return indexed_array;
 }
 
-function send_data() {
+function send_data(object_type) {
     var id = $('#user_id').html();
     // console.log('user_id = ', id);
     var prefix =  (id != undefined) ? id : '';
     var user_data = getFormData($form);
     // console.log('user_data = ', user_data);
     $.ajax({
-        url: 'create/user/' + prefix,
+        url: object_type+ '/create/' + prefix,
         type: 'POST',
         data: user_data,
         dataType: 'json',
@@ -78,9 +78,9 @@ function send_data() {
     });
 }
 
-function fill_form(id){
+function fill_form(id, type){
     $.ajax({
-        url: 'get_user_form/' + id,
+        url: type + '/get_form/' + id,
         type: 'GET',
         dataType: 'json',
         success: function (response) {

@@ -8,12 +8,12 @@
         <div class="col-md-6">
             Пользователи:
             <ul id="users_list">
-                {% include 'inc-users_list.html' %}
+                {% include 'inc-objects_list.html' %}
             </ul>
         </div>
     </div>
     <form id="user_form">
         {% include 'inc-registration_form.html' %}
     </form>
-    <input type="submit" value="Edit account" onclick="send_data()">
+    <input type="submit" value="Edit account" onclick="send_data('{{ object_type }}')">
 {% endblock %}

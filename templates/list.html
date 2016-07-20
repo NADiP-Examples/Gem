@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for gem in gems %}
+        <div class="gem_container">
+            <div class="name">
+                {{ gem.name }}
+            </div>
+            <div class="image">
+                <img src="/static/images/{{ gem.image | default:"dfav.png" }}">
+            </div>
+            {{ gem.category.name }}
+        </div>
+    {% endfor %}
+    <div class="pagination">
+    <span class="step-links">
+        {% if gems.has_previous %}
+            <a href="?page={{ gems.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ gems.number }} of {{ gems.paginator.num_pages }}.
+        </span>
+        {% if gems.has_next %}
+            <a href="?page={{ gems.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+    </div>
+{% endblock %}

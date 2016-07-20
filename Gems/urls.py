@@ -17,22 +17,33 @@ from django.conf.urls import url
 from mainApp.views import *
 from userManagementApp.views import *
 from adminApp.views import *
+from userManagementApp.forms import MyRegistrationForm, UserChangeForm
+from mainApp.forms import GemsForm
 
+# site
 urlpatterns = [
-    url(r'^$', main),
+    url(r'^$', listing),
 ]
 
+# user management
 urlpatterns += [
     url(r'^user/login/$', login),
     url(r'^user/logout/$', logout),
-    # url(r'^user/registration/$', registration_low),
     url(r'^user/registration/$', registration),
-    url(r'^admin/$', admin_page),
-    url(r'^admin/delete/user/(\d+)$', delete_user),
-    url(r'^admin/get_user_form/(\d+)$', get_user_form),
-    url(r'^admin/create/user/(\d*)$', create_user),
 ]
 
+# admin
+urlpatterns += [
+    url(r'^admin/$', admin_page),
+    url(r'^admin/users/$', admin_page),
+    url(r'^admin/gems/$', admin_gems),
+    url(r'^delete/user/(\d+)$', delete_user),
+    url(r'user/get_form/(\d+)$', get_form, {'object_form': MyRegistrationForm}),
+    url(r'gem/get_form/(\d+)$', get_form, {'object_form': GemsForm}),
+    # url(r'user/create/(\d*)$', create_user),
+    url(r'create/user/(\d*)$', create_object, {'object_form': MyRegistrationForm}),
+    url(r'gem/create/(\d*)$', create_object, {'object_form': GemsForm}),
+]
 # Данный подход нерекомендуется, и будет убран в django 1.10
 # urlpatterns = patterns('mainApp.views',
 #     url(r'^$', 'main'),
