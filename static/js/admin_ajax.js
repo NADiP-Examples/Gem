@@ -29,13 +29,17 @@ function update_objects_list(new_html) {
 function send_data(id, url_prefix) {
     // Запрос на создание/редактирование объекта
     var prefix = (id != undefined) ? id : '';
-    var user_data = $("#fill_form").serializeArray();
-    console.log('user_data = ', user_data);
+    // var user_data = $("#fill_form").serializeArray();
+    var user_data = new FormData($("#fill_form").get(0));
+    // console.log('user_data = ', user_data);
     $.ajax({
         url: url_prefix + '/create/' + prefix,
         type: 'POST',
         data: user_data,
         dataType: 'json',
+        cache: false,
+        processData: false,
+        contentType: false,
         success: function (response) {
             console.log("response = ", response);
             update_objects_list(response.html);

@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.models import User
 from mainApp.models import Gem
 from userManagementApp.forms import MyRegistrationForm, UserChangeForm
-from mainApp.forms import GemsForm
+from mainApp.forms import GemsForm, CategoryForm
 from django.http import Http404, JsonResponse
 from django.template import loader
 from django.template.context_processors import csrf
@@ -27,11 +27,13 @@ class BaseView(View):
 
     def post(self, request, *args, **kwargs):
         id = args[0] if args else None
+        print('files = ', request.FILES)
         if not id:
-            form = self.model_form(request.POST)
+            form = self.model_form(data=request.POST or None, files=request.FILES)
         else:
             object = get_object_or_404(self.model, id=id)
-            form = self.model_form(request.POST or None, instance=object)
+            form = self.model_form(data=request.POST or None, files=request.FILES,
+                                   instance=object)
         if form.is_valid():
             form.save()
             objects = self.model.objects.all()
@@ -73,6 +75,7 @@ class BaseView(View):
             form = cls.model_form()
         form_context['form'] = form
         form_context['url_prefix'] = cls.url_prefix
+        form_context['category_form'] = CategoryForm()
         html = loader.render_to_string('inc-creation_form.html', form_context)
         context['html'] = html
         return JsonResponse(context)
@@ -85,3 +88,12 @@ class GemView(BaseView):
     url_prefix = 'gem'
 
 
+def category_create(request, id=None):
+    if request.method != "POST":
+        raise Http404
+    form = CategoryForm(request.POST)
+    if form.is_valid():
+        print("form valid")
+        form.save()
+        return HttpResponseRedirect('/admin/gems/')
+    print('form not valid')

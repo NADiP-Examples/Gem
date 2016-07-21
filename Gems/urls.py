@@ -17,6 +17,8 @@ from django.conf.urls import url
 from mainApp.views import *
 from userManagementApp.views import *
 from adminApp.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 from userManagementApp.forms import MyRegistrationForm, UserChangeForm
 from mainApp.forms import GemsForm
 
@@ -39,8 +41,13 @@ urlpatterns += [
     url(r'gem/get_form/(\d*)$', GemView.get_form),
     url(r'gem/create/(\d*)$', GemView.as_view()),
     url(r'gem/delete/(\d+)$', GemView.as_view()),
+    url(r'category/create/(\d*)$', category_create),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # Данный подход нерекомендуется, и будет убран в django 1.10
 # urlpatterns = patterns('mainApp.views',
 #     url(r'^$', 'main'),
 # )
+

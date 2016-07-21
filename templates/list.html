@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for gem in gems %}
+     {% for gem in gems %}
         <div class="gem_container">
             <div class="name">
                 {{ gem.name }}
             </div>
             <div class="image">
-                <img src="/static/images/{{ gem.image | default:"dfav.png" }}">
+                <img src="/media/{{ gem.image | default:"dfav.png" }}">
             </div>
             {{ gem.category.name }}
         </div>
