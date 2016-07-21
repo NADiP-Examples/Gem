@@ -1,19 +1,21 @@
 {% extends "base_admin.html" %}
 {% block js %}
     {{ block.super }}
-    <script src="/static/js/create_user.js"></script>
+    <script src="/static/js/admin_ajax.js"></script>
 {% endblock %}
 {% block content %}
     <div class="row">
         <div class="col-md-6">
-            Пользователи:
-            <ul id="users_list">
+            Список объектов:
+            <ul id="objects_list">
                 {% include 'inc-objects_list.html' %}
             </ul>
         </div>
     </div>
-    <form id="user_form">
-        {% include 'inc-registration_form.html' %}
-    </form>
-    <input type="submit" value="Edit account" onclick="send_data('{{ object_type }}')">
+    <input type="submit" value="Create New" onclick="get_form('{{ id }}', '{{ url_prefix }}')">
+    <div id="creation-form">
+        ...
+    </div>
+{#    {% include 'inc-creation_form.html' %}#}
+
 {% endblock %}

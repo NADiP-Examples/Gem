@@ -34,15 +34,11 @@ urlpatterns += [
 
 # admin
 urlpatterns += [
-    url(r'^admin/$', admin_page),
-    url(r'^admin/users/$', admin_page),
-    url(r'^admin/gems/$', admin_gems),
-    url(r'^delete/user/(\d+)$', delete_user),
-    url(r'user/get_form/(\d+)$', get_form, {'object_form': MyRegistrationForm}),
-    url(r'gem/get_form/(\d+)$', get_form, {'object_form': GemsForm}),
-    # url(r'user/create/(\d*)$', create_user),
-    url(r'create/user/(\d*)$', create_object, {'object_form': MyRegistrationForm}),
-    url(r'gem/create/(\d*)$', create_object, {'object_form': GemsForm}),
+    # url(r'^admin/$', admin_page),
+    url(r'^admin/gems/$', GemView.as_view()),
+    url(r'gem/get_form/(\d*)$', GemView.get_form),
+    url(r'gem/create/(\d*)$', GemView.as_view()),
+    url(r'gem/delete/(\d+)$', GemView.as_view()),
 ]
 # Данный подход нерекомендуется, и будет убран в django 1.10
 # urlpatterns = patterns('mainApp.views',

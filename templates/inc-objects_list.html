@@ -1,11 +1,12 @@
 {% for object in objects %}
     <li> {{ object.name }} {{ object.username }}
-        <button type="button" class="btn btn-default" aria-label="Edit"
-                onclick="fill_form({{ object.id }}, '{{ object_type }}')">
+        <button class="btn btn-default" aria-label="Edit"
+                onclick="get_form('{{ object.id }}', '{{ url_prefix }}')">
             <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
         </button>
-        <a href="delete/{{ object_type }}/{{ object.id }}" class="btn btn-default">
+        <button class="btn btn-default" aria-label="Delete"
+                onclick="delete_object('{{ object.id }}', '{{ url_prefix }}')">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </a>
+        </button>
     </li>
 {% endfor %}
