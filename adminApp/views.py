@@ -8,6 +8,7 @@ from django.template import loader
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import user_passes_test
 from django.views.generic.base import TemplateView, View
+from django.views.decorators.http import require_http_methods
 
 
 class BaseView(View):
@@ -88,12 +89,15 @@ class GemView(BaseView):
     url_prefix = 'gem'
 
 
+@require_http_methods(["POST"])
 def category_create(request, id=None):
-    if request.method != "POST":
-        raise Http404
+    # if request.method != "POST":
+    #     raise Http404
     form = CategoryForm(request.POST)
     if form.is_valid():
         print("form valid")
         form.save()
         return HttpResponseRedirect('/admin/gems/')
-    print('form not valid')
+    else:
+        # TODO: add you code here...
+        pass

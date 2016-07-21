@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load my_tags %}
 {% block content %}
      {% for gem in gems %}
         <div class="gem_container">
             <div class="name">
-                {{ gem.name }}
+                {{ gem.name | through_one }}
             </div>
             <div class="image">
                 <img src="/media/{{ gem.image | default:"dfav.png" }}">
